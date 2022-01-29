@@ -4,7 +4,7 @@
 // também um default, que retornará uma mensagem de erro no console.
 
 function venderFruta(fruta) {
-    switch (fruta) {
+    switch(fruta) {
         case 'maçã':
             console.log('Não vendemos esta fruta aqui.');
             break;
