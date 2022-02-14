@@ -1,0 +1,102 @@
+<p>
+    <img 
+        src="http://files.cod3r.com.br/curso-web/imagem1.jpg" 
+        alt="Muro da Cidade"
+        width="513"
+        height="342"
+        title="Muro da Cidade por Tarso Bessa">
+</p>
+
+<p>
+    <img 
+        src="http://files.cod3r.com.br/curso-web/imagem2.gif" 
+        alt="Intro Cod3r"
+        height="342">
+</p>
+
+<p class="circular">
+    <img 
+        src="http://files.cod3r.com.br/curso-web/imagem3.png" 
+        alt="Rio de Janeiro"
+        height="342">
+</p>
+
+<p class="cidade"></p>
+
+<p>
+    <picture>
+        <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
+            media="(min-width: 600px)">
+        <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png"/>
+    </picture>
+</p>
+
+<style>
+    p {
+        position: absolute;        
+        display: none;
+    }
+
+    .circular {
+        width: 513px;
+        background-color: #444;
+    }
+
+    .texto {
+        width: 400px;
+    }
+
+    .texto img {
+        margin-right: 10px;
+    }
+
+    .cidade {
+        width: 513px;
+        height: 342px;
+        background-image: url('http://files.cod3r.com.br/curso-web/imagem4.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 200%;
+    }
+</style>
+
+<script>
+    function mover(elemento, posicaoAtual, posicaoFinal, passo, callbackFim) {
+        let novaPosicao = posicaoAtual - passo;
+        console.log(posicaoAtual, posicaoFinal, novaPosicao);
+        if (novaPosicao >= posicaoFinal) {
+            elemento.style.left = `${novaPosicao}px`;
+            setTimeout(() => {
+                mover(elemento, novaPosicao, posicaoFinal, passo, callbackFim);
+            }, 5);
+        } else {
+            callbackFim();
+        }
+    }
+
+    function exibir(elemento, elementos) {
+        elemento.style.display = 'block';
+        elemento.style.left = `${innerWidth}px`;
+        mover(elemento, innerWidth, -elemento.clientWidth, 2, () => {
+            elemento.style.display = 'none';
+            exibir(obterProximoElemento(elemento, elementos), elementos);
+        });
+    }
+
+    function obterProximoElemento(elemento, elementos) {
+        let indice = elementos.indexOf(elemento) + 1;        
+        if (indice >= elementos.length) {
+            indice = 0;
+        }
+        return elementos[indice];
+    }
+
+    function iniciar() {
+        const elementos = Array.from(document.querySelectorAll('p'));
+        if (elementos.length > 0) {
+            exibir(elementos[0], elementos);
+        }        
+    }
+
+    iniciar();
+</script>
