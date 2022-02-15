@@ -1,0 +1,60 @@
+<video id="meuVideo" width="800px" height="450px" controls controlsList="nodownload">
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+    Seu browser não suporta a tag de vídeo.
+</video>
+
+<div wm-progresso="meuVideo" class="progresso">
+    <div></div>
+</div>
+
+<div>
+    <button wm-play="meuVideo">Play</button>
+    <button wm-pause="meuVideo">Pause</button>
+</div>
+
+<style>
+    .progresso {
+        width: 800px;
+        height: 5px;        
+        margin-bottom: 5px;
+        background-color: gray;        
+    }
+
+    .progresso > div {
+        width: 0%;
+        height: 100%;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        background-color: brown;      
+    }
+</style>
+
+<script>    
+    function configurarVideo(id){
+        const video = document.getElementById(id);
+        const div = document.querySelector(`[wm-progresso=${id}] > div`);
+
+        video.oncontextmenu = () => false;
+        
+        document.querySelector(`[wm-play=${id}]`).onclick = (event) => {
+            video.play();
+        }
+        
+        document.querySelector(`[wm-pause=${id}]`).onclick = (event) => {
+            video.pause();
+        }
+
+        video.ontimeupdate = (event) => {  
+            const posicao = Number.parseInt(video.currentTime * 100 / video.duration);
+            div.style.width = `${posicao}%`;
+        }
+        
+        // Solução alternativa
+        /*setInterval(() => {
+            const posicao = Number.parseInt(video.currentTime * 100 / video.duration);
+            div.style.width = `${posicao}%`;
+        }, 500);*/
+    }
+
+    configurarVideo('meuVideo');
+</script>
