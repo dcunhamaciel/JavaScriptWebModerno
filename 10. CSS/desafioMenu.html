@@ -8,67 +8,109 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
         * {
-            font-family: Oswald;
-            color: #fff;
+            box-sizing: border-box;
         }
 
         body {
             margin: 0px;
-            background-color: rgba(92, 84, 84, 0.35);
+            font-family: 'Oswald', sans-serif;
+            background-color: lightgray;
         }
 
-        img {
-            height: 80%;
-            padding: 5px;
+        .cabecalho {            
+            height: 80px;
+            background-color: #333;
+            border-bottom: solid 5px #4faddb;
+            box-sizing: content-box;
         }
 
-        ul {
-            margin: 0px;
-            padding: 0px;
-            height: 100%;
+        .logo {
+            display: inline-block;
+            height: 80px;
+            padding: 10px;
         }
 
-        li {
-            width: 60px;
-            height: 40px;
-            padding-top: 10px;
-            text-align: center;
-            display: inline-block;            
+        .logo img {
+            height: 60px;
         }
 
-        li:hover {
-            background-color: black;
-        }
-
-        aside {
-            position: absolute;
-            right: 10px;
-            padding-top: 10px;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        .cabecalho {
-            display: flex;
-            height: 50px;
-            background-color: rgb(41, 39, 39);
-            border-bottom: solid 4px lightskyblue;
+        .menu-toggle {
+            float: right;
+            padding: 10px 20px;
+            margin: 20px 15px;            
+            height: 50%;
+            color: #eee;
+            background-color: #555;
+            border: solid 1px #777;
+            border-radius: 5px;
         }
 
         .menu {
+            display: inline-block;
+            vertical-align: top;
+            height: 80px;
+            padding: 25px;
+        }
 
-        } 
+        .menu ul {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .menu li {
+            display: inline-block;
+        }
+
+        .cabecalho a {            
+            text-decoration: none;
+            color: #eee;
+            font-size: 1.3em;            
+        }
+
+        .menu a {
+            padding: 15px;
+        }
+
+        .autenticacao {
+            float: right;
+            height: 80px;
+            padding: 25px;
+        }
+
+        .menu a:hover,
+        .menu a.selected {
+            background-color: #4faddb;
+            color: black;
+        }
+
 
         .botao {
-            padding: 5px 15px;
-            margin: 5px;
-            border-radius: 25px;    
+            border-radius: 30px;            
+            padding: 10px 25px;
+            margin: 10px;
         }
 
         .destaque {
-            background-color: red;
+            background-color: #f50a31;
+            color: #fff;
+        }
+
+        @media(min-width: 679px) {
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        @media(max-width: 680px) {
+            .menu {
+                display: none;
+            }
+        }
+
+        @media(max-width: 910px) {
+            .autenticacao {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -106,7 +148,16 @@
     </header>
 
     <script>
-        // ...
+        window.onhashchange = (event) => {
+            const oldURL = event.oldURL.split('#')[1];
+            const newURL = event.newURL.split('#')[1];
+
+            const oldLink = document.querySelector(`.menu a[href='#${oldURL}']`);
+            const newLink = document.querySelector(`.menu a[href='#${newURL}']`);
+
+            oldLink && oldLink.classList.remove('selected');
+            newLink && newLink.classList.add('selected');
+        }
     </script>
 </body>
 
