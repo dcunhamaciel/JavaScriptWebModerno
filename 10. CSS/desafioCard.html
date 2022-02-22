@@ -6,44 +6,53 @@
     <title>Desafio Card</title>
     <style>
         .curso {
-            display: inline-block;            
-            margin: 20px;
-            height: 310px;
-            width: 270px;
-            border: solid 1px lightgray;
-            box-shadow: 1px;
-            box-shadow: 3px 3px lightgray;
+            display: inline-block;
+            vertical-align: top;
+            margin: 5px 20px;   
+            padding: 5px;
+            height: 300px;
+            width: 260px;       
+            font-family: Verdana, sans-serif;
+            border: solid 1px #CCC;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .curso img {
-            margin: 5px;
-            height: 150px;
-            width: 260px;
+            width: 100%;
+            max-height: 50%;
         }
 
-        .curso h4 {
-            font-size: 1.3em;            
+        .curso-info {
+            padding: 10px;
+            height: 90px;
+            overflow: hidden;
+        }
+
+        .curso-info h4 {
+            font-size: 1.4em;
+            font-weight: 100;
+            margin: 0px;
+        }
+
+        .curso-preco {
+            float: right;
+            padding: 10px;
         }
 
         .preco-de {
             text-decoration: line-through;
-            color: darkred;
+            color: firebrick;
         }
 
         .preco-por {
             font-weight: bold;
-            font-size: 1.5em;
+            font-size: 1.4em;
             color: green;            
-        }
-        
-        .curso-preco span {
-
-        }
+        }        
     </style>
 </head>
 
 <body>
-    <img src="http://files.cod3r.com.br/curso-web/card.png" height="340" alt="Objetivo">
     <div>
         <div class="curso">
             <img src="http://files.cod3r.com.br/curso-web/curso1.jpg" />
