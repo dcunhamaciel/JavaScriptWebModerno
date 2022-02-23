@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #03</title>
+    <style>
+        div {
+            border: solid 5px dodgerblue;
+            font-size: 40px;
+        }
+
+        .flex-container {
+            display: flex;
+        }
+
+        .flex-container div {
+            box-sizing: content-box;
+            flex-basis: 100px; /* tamanho no sentido no mais axis */
+            width: 200px; /* sem efeito junto com o flex-basis + flex-direction = row */ 
+        }
+        
+        .flex-container div:nth-child(4) {
+            /* grow shirink basis */
+            flex: 3 6 100px;
+        }        
+    </style>
+</head>
+
+<body>
+    <div class="flex-container tag nolabel">
+        <div class="tag nolabel">1</div>
+        <div class="tag nolabel">2</div>
+        <div class="tag nolabel">3</div>
+        <div class="tag nolabel">4</div>
+    </div>
+</body>
+
+</html>
