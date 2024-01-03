@@ -13,7 +13,7 @@ function Barreira(reversa = false) {
     this.elemento.appendChild(reversa ? corpo : borda)
     this.elemento.appendChild(reversa ? borda : corpo)
 
-    this.setAltura = altura => corpo.style.heigth = `${altura}px`
+    this.setAltura = altura => corpo.style.height = `${altura}px`
 }
 
 function ParDeBarreiras(altura, abertura, x) {
@@ -114,8 +114,8 @@ function estaoSobrepostos(elementoA, elementoB) {
     const horizontal = a.left + a.width >= b.left &&
                        b.left + b.width >= a.left
 
-    const vertical = a.top + a.heigth >= b.top &&
-                     b.top + b.heigth >= a.top
+    const vertical = a.top + a.height >= b.top &&
+                     b.top + b.height >= a.top
 
     return horizontal && vertical
 }
